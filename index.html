@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<title>Contrat de bail de location</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Style -->
+<style>
+body {
+    font-family: "Times New Roman", serif;
+    background:#eaeaea;
+    padding:20px;
+}
+.page {
+    max-width:850px;
+    margin:auto;
+    background:white;
+    padding:40px;
+    box-shadow:0 0 10px rgba(0,0,0,0.15);
+}
+h1{text-align:center; text-transform:uppercase; margin-bottom:5px;}
+.subtitle{text-align:center; font-style:italic; margin-bottom:30px;}
+.section{margin-bottom:25px;}
+.section-title{font-weight:bold; text-transform:uppercase; margin-bottom:10px;}
+.line{margin:8px 0;}
+input{border:none; border-bottom:1px dotted #000; width:100%; font-size:15px; padding:2px;}
+.inline{display:inline-block; width:45%; margin-right:5%;}
+.long{width:100%;}
+.lang-switch{text-align:right; margin-bottom:20px;}
+button{
+    padding:8px 16px;
+    border:none;
+    background:#000;
+    color:white;
+    cursor:pointer;
+    margin-right:5px;
+}
+button:hover{background:#333;}
+.signature{margin-top:50px; display:flex; justify-content:space-between;}
+.signature div{width:40%; text-align:center;}
+@media print{
+    body{background:none;padding:0;}
+    .page{box-shadow:none;}
+    button{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<!-- Langue -->
+<div class="lang-switch">
+    <button onclick="setLang('mg')">MG</button>
+    <button onclick="setLang('fr')">FR</button>
+</div>
+
+<h1 data-i18n="title"></h1>
+<div class="subtitle" data-i18n="subtitle"></div>
+
+<!-- Section 1 -->
+<div class="section">
+    <div class="section-title" data-i18n="sec1"></div>
+    <div class="line"><strong data-i18n="owner"></strong></div>
+    <div class="line">Anarana feno : <input class="long"></div>
+    <div class="line">Laharan'ny CIN : <input class="long"></div>
+    <div class="line">Navoaka ny : <input class="inline"> Duplicata : <input class="inline"></div>
+
+    <div class="line"><strong data-i18n="tenant"></strong></div>
+    <div class="line">Anarana feno : <input class="long"></div>
+    <div class="line">Laharan'ny CIN : <input class="long"></div>
+    <div class="line">Adiresy ankehitriny : <input class="long"></div>
+</div>
+
+<!-- Section 2 -->
+<div class="section">
+    <div class="section-title" data-i18n="sec2"></div>
+    <div class="line">Toerana misy ny trano :</div>
+    <input class="long">
+</div>
+
+<!-- Section 3 -->
+<div class="section">
+    <div class="section-title" data-i18n="sec3"></div>
+    <p data-i18n="duration"></p>
+</div>
+
+<!-- Section 4 -->
+<div class="section">
+    <div class="section-title" data-i18n="sec4"></div>
+    <div class="line">Hofan-trano isam-bolana : <input class="inline"> Ariary</div>
+    <div class="line">Daty fandoavana : <input class="inline"></div>
+    <div class="line">Petra-bola (caution) : <input class="inline"> Ariary</div>
+</div>
+
+<!-- Sections 5 à 10 -->
+<div class="section">
+    <div class="section-title" data-i18n="sec5"></div>
+    <p data-i18n="revision"></p>
+</div>
+<div class="section">
+    <div class="section-title" data-i18n="sec6"></div>
+    <p data-i18n="etat"></p>
+</div>
+<div class="section">
+    <div class="section-title" data-i18n="sec7"></div>
+    <p data-i18n="electricity"></p>
+</div>
+<div class="section">
+    <div class="section-title" data-i18n="sec8"></div>
+    <p data-i18n="sublet"></p>
+</div>
+<div class="section">
+    <div class="section-title" data-i18n="sec9"></div>
+    <p data-i18n="behavior"></p>
+</div>
+<div class="section">
+    <div class="section-title" data-i18n="sec10"></div>
+    <p data-i18n="noise"></p>
+</div>
+
+<!-- Dates -->
+<div class="section">
+    Vita tao : <input class="inline">
+    Tamin’ny : <input class="inline">
+</div>
+
+<!-- Signatures -->
+<div class="signature">
+    <div><p><strong data-i18n="owner"></strong></p><br><br>Soniany</div>
+    <div><p><strong data-i18n="tenant"></strong></p><br><br>Soniany</div>
+</div>
+
+<!-- Boutons -->
+<button onclick="window.print()">Imprimer / PDF</button>
+<button onclick="generatePDF()">Générer PDF</button>
+
+</div>
+
+<!-- Traductions -->
+<script>
+const t={
+mg:{title:"FIFANEKENA FANOFANA TRANO", subtitle:"(Fampanofana trano hipetrahana)",
+sec1:"I. ANTOKO AO ANATIN’NY FIFANEKENA", sec2:"II. TOETRAN’NY TRANO", sec3:"III. FAHARETAN’NY FIFANEKENA",
+sec4:"IV. HOFAN-TRANO SY PETRA-BOLA", sec5:"V. FANITSANA NY HOFAN-TRANO", sec6:"VI. FAMARINANA NY TOETRAN’NY TRANO",
+sec7:"VII. HERINARATRA", sec8:"VIII. FANDRARÀNA FANOFANA INDRAY", sec9:"IX. FITONDRAN-TENA SY FANARAHA-DALÀNA",
+sec10:"X. TABATABA", owner:"Tompon-trano", tenant:"Mpanofa",
+duration:"Ity fifanekena ity dia maharitra telo (03) volana, tsy misy filazana mialoha, azo havaozina indray mandeha. Raha mihoatra ny herintaona ny fipetrahana dia ilaina ny filazana mialoha roa (02) volana.",
+revision:"Ny hofan-trano dia azo ahitsy indray mandeha isan-taona arakaraka ny fiakaran’ny vidim-piainana.",
+etat:"Hisy fanamarinana ny toetry ny trano rehefa miditra sy miala ny mpanofa.",
+electricity:"Ny fandaniana herinaratra sy rano rehetra dia andraikitry ny mpanofa.",
+sublet:"Voarara tanteraka ny fanofana indray raha tsy misy fanekena an-tsoratra.",
+behavior:"Ny mpanofa dia tsy maintsy manaja ny trano sy ny mpiara-monina.",
+noise:"Voarara ny tabataba amin’ny andro fiasana. Azo atao amin’ny faran’ny herinandro amin’ny feo antonony tsy mihoatra ny 6 ora."
+},
+fr:{title:"CONTRAT DE LOCATION", subtitle:"(Location à usage d’habitation)",
+sec1:"I. PARTIES AU CONTRAT", sec2:"II. DESCRIPTION DU LOGEMENT", sec3:"III. DURÉE DU BAIL",
+sec4:"IV. LOYER ET CAUTION", sec5:"V. RÉVISION DU LOYER", sec6:"VI. ÉTAT DES LIEUX",
+sec7:"VII. ÉLECTRICITÉ", sec8:"VIII. INTERDICTION DE SOUS-LOCATION", sec9:"IX. COMPORTEMENT ET RÈGLES",
+sec10:"X. NUISANCES SONORES", owner:"Bailleur", tenant:"Locataire",
+duration:"Le présent bail est conclu pour une durée de trois (03) mois, renouvelable une fois. Après un an, un préavis de deux (02) mois est requis.",
+revision:"Le loyer peut être révisé une fois par an selon l’évolution économique.",
+etat:"Un état des lieux sera effectué à l’entrée et à la sortie.",
+electricity:"Les charges d’électricité et d’eau sont à la charge du locataire.",
+sublet:"Toute sous-location est strictement interdite sans accord écrit.",
+behavior:"Le locataire doit respecter le logement et le voisinage.",
+noise:"Les nuisances sont interdites les jours ouvrables. Autorisées le week-end à volume modéré (6h max)."
+}
+};
+
+function setLang(l){
+    document.querySelectorAll("[data-i18n]").forEach(e=>{
+        e.innerText = t[l][e.dataset.i18n];
+    });
+}
+setLang("mg");
+
+// Sauvegarde automatique localStorage
+document.querySelectorAll('input').forEach((input,i)=>{
+    input.value = localStorage.getItem('input'+i) || '';
+    input.addEventListener('input',()=>localStorage.setItem('input'+i,input.value));
+});
+
+// Génération PDF avec jsPDF
+function generatePDF(){
+    const script = document.createElement('script');
+    script.src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+    script.onload = ()=>{
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        doc.html(document.querySelector(".page"), {
+            callback: function(doc){ doc.save("contrat.pdf"); },
+            x: 10, y: 10, width: 180
+        });
+    };
+    document.body.appendChild(script);
+}
+</script>
+
+</body>
+</html>
+
